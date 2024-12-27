@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 public class DeterministicCollider : MonoBehaviour
 {
     public int width = 1;
@@ -72,9 +72,9 @@ public class DeterministicCollider : MonoBehaviour
 
     private void PreventCollision(DeterministicCollider other)
     {
-        // Calculate the overlap between the two objects
-        int overlapX = Mathf.Min(x + width, other.x + other.width) - Mathf.Max(x, other.x);
-        int overlapY = Mathf.Min(y + height, other.y + other.height) - Mathf.Max(y, other.y);
+        // Calculate the overlap between the two objects using integer arithmetic
+        int overlapX = Math.Min(x + width, other.x + other.width) - Math.Max(x, other.x);
+        int overlapY = Math.Min(y + height, other.y + other.height) - Math.Max(y, other.y);
 
         if (overlapX > overlapY)
         {
